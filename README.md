@@ -6,25 +6,25 @@
 
 <div align="center">
 
-# nonebot_plugin_example
+# nonebot_template_plugin
 
 _✨ NoneBot 插件简单描述 ✨_
 
 
-<a href="https://github.com/Ikaros-521/nonebot_plugin_example/stargazers">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/Ikaros-521/nonebot_plugin_example?color=%09%2300BFFF&style=flat-square">
+<a href="https://github.com/Ikaros-521/nonebot_template_plugin/stargazers">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/Ikaros-521/nonebot_template_plugin?color=%09%2300BFFF&style=flat-square">
 </a>
-<a href="https://github.com/Ikaros-521/nonebot_plugin_example/issues">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues/Ikaros-521/nonebot_plugin_example?color=Emerald%20green&style=flat-square">
+<a href="https://github.com/Ikaros-521/nonebot_template_plugin/issues">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/Ikaros-521/nonebot_template_plugin?color=Emerald%20green&style=flat-square">
 </a>
-<a href="https://github.com/Ikaros-521/nonebot_plugin_example/network">
-    <img alt="GitHub forks" src="https://img.shields.io/github/forks/Ikaros-521/nonebot_plugin_example?color=%2300BFFF&style=flat-square">
+<a href="https://github.com/Ikaros-521/nonebot_template_plugin/network">
+    <img alt="GitHub forks" src="https://img.shields.io/github/forks/Ikaros-521/nonebot_template_plugin?color=%2300BFFF&style=flat-square">
 </a>
 <a href="./LICENSE">
-    <img src="https://img.shields.io/github/license/Ikaros-521/nonebot_plugin_example.svg" alt="license">
+    <img src="https://img.shields.io/github/license/Ikaros-521/nonebot_template_plugin.svg" alt="license">
 </a>
-<a href="https://pypi.python.org/pypi/nonebot_plugin_example">
-    <img src="https://img.shields.io/pypi/v/nonebot_plugin_example.svg" alt="pypi">
+<a href="https://pypi.python.org/pypi/nonebot_template_plugin">
+    <img src="https://img.shields.io/pypi/v/nonebot_template_plugin.svg" alt="pypi">
 </a>
 <a href="https://www.python.org">
     <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="python">
@@ -37,7 +37,7 @@ _✨ NoneBot 插件简单描述 ✨_
 模板库使用方法:
 1. 点击仓库中的 "Use this template" 按钮, 输入仓库名与描述, 点击 "  Create repository from template" 创建仓库
 2. 在创建好的新仓库中, 在 "Add file" 菜单中选择 "Create new file", 在新文件名处输入`LICENSE`, 此时在右侧会出现一个 "Choose a license template" 按钮, 点击此按钮选择开源协议模板, 然后在最下方提交新文件到主分支
-3. 全局替换`Ikaros-521`为仓库所有者ID; 全局替换`nonebot_plugin_example`为插件名; 全局替换`nonebot_plugin_example`为包名; 修改 python 徽标中的版本为你插件的运行所需版本
+3. 全局替换`Ikaros-521`为仓库所有者ID; 全局替换`nonebot_template_plugin`为插件名; 全局替换`nonebot_template_plugin`为包名; 修改 python 徽标中的版本为你插件的运行所需版本
 4. 修改 README 中的插件名和插件描述, 并在下方填充相应的内容
 
 ## 📖 介绍
@@ -56,37 +56,37 @@ python：3.8.13
 
 在你bot工程的文件夹下，运行cmd（运行路径要对啊），执行nb命令安装插件，插件配置会自动添加至配置文件  
 ```
-nb plugin install nonebot_plugin_example
+nb plugin install nonebot_template_plugin
 ```
 
 ### 2. 本地安装
 
-将项目clone到你的机器人插件下的对应插件目录内（一般为机器人文件夹下的`src/plugins`），然后把`nonebot_plugin_example`文件夹里的内容拷贝至上一级目录即可。  
+将项目clone到你的机器人插件下的对应插件目录内（一般为机器人文件夹下的`src/plugins`），然后把`nonebot_template_plugin`文件夹里的内容拷贝至上一级目录即可。  
 clone命令参考（得先装`git`，懂的都懂）：
 ```
-git clone https://github.com/Ikaros-521/nonebot_plugin_example.git
+git clone https://github.com/Ikaros-521/nonebot_template_plugin.git
 ``` 
-也可以直接下载压缩包到插件目录解压，然后同样提取`nonebot_plugin_example`至上一级目录。  
-目录结构： ```你的bot/src/plugins/nonebot_plugin_example/__init__.py```  
+也可以直接下载压缩包到插件目录解压，然后同样提取`nonebot_template_plugin`至上一级目录。  
+目录结构： ```你的bot/src/plugins/nonebot_template_plugin/__init__.py```  
 
 
 ### 3. pip安装
 ```
-pip install nonebot_plugin_example
+pip install nonebot_template_plugin
 ```  
 打开 nonebot2 项目的 ```bot.py``` 文件, 在其中写入  
-```nonebot.load_plugin('nonebot_plugin_example')```  
-当然，如果是默认nb-cli创建的nonebot2的话，在bot路径```pyproject.toml```的```[tool.nonebot]```的```plugins```中添加```nonebot_plugin_example```即可  
+```nonebot.load_plugin('nonebot_template_plugin')```  
+当然，如果是默认nb-cli创建的nonebot2的话，在bot路径```pyproject.toml```的```[tool.nonebot]```的```plugins```中添加```nonebot_template_plugin```即可  
 pyproject.toml配置例如：  
 ``` 
 [tool.nonebot]
 plugin_dirs = ["src/plugins"]
-plugins = ["nonebot_plugin_example"]
+plugins = ["nonebot_template_plugin"]
 ``` 
 
 ### 更新版本
 ```
-nb plugin update nonebot_plugin_example
+nb plugin update nonebot_template_plugin
 ```
 
 ## 🔧 配置

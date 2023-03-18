@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "nonebot_plugin_example"
+name = "nonebot_template_plugin"
 version = "0.0.1"
 description = "插件描述"
 authors = ["Ikaros <327209194@qq.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "nonebot_plugin_example"}]
-homepage = "https://github.com/Ikaros-521/nonebot_plugin_example"
-repository = "https://github.com/Ikaros-521/nonebot_plugin_example"
-documentation = "https://github.com/Ikaros-521/nonebot_plugin_example/blob/master/README.md"
+packages = [{include = "nonebot_template_plugin"}]
+homepage = "https://github.com/Ikaros-521/nonebot_template_plugin"
+repository = "https://github.com/Ikaros-521/nonebot_template_plugin"
+documentation = "https://github.com/Ikaros-521/nonebot_template_plugin/blob/master/README.md"
 
 # 添加清华镜像
 [[tool.poetry.source]]

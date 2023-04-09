@@ -254,7 +254,7 @@ async def _(
     # 定义了一个空的 msgList 列表
     msgList = []
 
-    # 转发者的昵称
+    # 获取 发送人群名片 / 昵称
     # 这里使用消息发送人的 群名片 或 昵称 或 “亻尔女子”，当前值 if 判断为假时自动向后取值
     nickname = event.sender.card or event.sender.nickname or "亻尔女子"
 
@@ -269,7 +269,7 @@ async def _(
                 # 创建一些自定义的节点，供消息链使用
                 MessageSegment.node_custom(
                     user_id=event.user_id,  # 转发者的QQ号（这里使用消息发送人 qq）
-                    nickname=nickname,
+                    nickname=nickname,  # 转发者的昵称
                     content=Message(MessageSegment.text(out_str)),
                 ),
                 MessageSegment.node_custom(

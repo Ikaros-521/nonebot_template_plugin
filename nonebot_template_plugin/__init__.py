@@ -264,13 +264,19 @@ async def _(
             [
                 # 创建一些自定义的节点，供消息链使用
                 MessageSegment.node_custom(
-                    user_id=123456,  # 转发者的QQ号（随便填）
-                    nickname="bot",  # 转发者的昵称（随便填）
+                    user_id=event.user_id,  # 转发者的QQ号（这里使用消息发送人 qq）
+                    nickname=(
+                        # 转发者的昵称
+                        # （这里使用消息发送人的 群名片 或 昵称 或 “亻尔女子”，当前值 if 判断为假时自动向后取值）
+                        event.sender.card
+                        or event.sender.nickname
+                        or "亻尔女子"
+                    ),
                     content=Message(MessageSegment.text(out_str)),
                 ),
                 MessageSegment.node_custom(
-                    user_id=1234567,
-                    nickname="bot2",
+                    user_id=event.user_id,
+                    nickname=(event.sender.card or event.sender.nickname or "亻尔女子"),
                     content=Message(MessageSegment.image(file=img_path)),
                 ),
             ]

@@ -293,4 +293,4 @@ async def _(
     except Exception:
         logger.exception("消息发送失败")
         msg = "果咩，数据发送失败喵~请查看源码和日志定位问题原因"
-        await forward_msg.finish(msg, reply_message=True)
+        await matcher.finish(msg, reply_message=True)

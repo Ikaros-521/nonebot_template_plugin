@@ -81,7 +81,7 @@ async def _(bot: Bot, event: MessageEvent, msg: Message = CommandArg()):
     # 等待请求函数返回我们需要的结果，赋值给data_json
     data_json = await get_api_return_img_json2()
     # 返回的data_json如果是None的话 就是请求中出问题了
-    if None == data_json:
+    if data_json is None:
         # 调用了NoneBot框架中的finish方法，该方法用于结束一个会话，并发送一个消息作为会话的最终结果
         # 我们发送一个字符串 结束
         await cmd2.finish("请求失败，这里写相关的错误的提示内容，告诉用户失败了")
@@ -175,8 +175,7 @@ async def _(bot: Bot, event: MessageEvent, msg: Message = CommandArg()):
                     with open(path_str, 'r', encoding='utf-8') as f:
                         # 如果文件成功打开，则使用read()方法读取文件内容，并将其存储在变量msg中。
                         msg = f.read()
-                        # 关闭文件句柄
-                        f.close()
+                        # 使用 with open() 打开的文件，会自动 close
                 except Exception as e:
                     # 如果发生异常，则将异常信息记录到后台日志中，并将msg变量设置为一个错误消息，提示用户文件读取失败。
                     nonebot.logger.info(e)
@@ -250,7 +249,7 @@ async def _(bot: Bot, event: MessageEvent, msg: Message = CommandArg()):
         # 我们把提示语追加到返回的字符串句前，方便用户理解
         msg = "返回结果：" + msg
         # 返回的data_json如果是None的话 就是请求中出问题了
-        if None == msg:
+        if msg is None:
             msg = "\n请求异常，可能是网络问题或者API挂了喵~（请检查后台日志排查）"
         # 设置 reply_message 参数为 True，表示回复原来的消息
         await cmd7.finish(Message(f'{msg}'), reply_message=True)

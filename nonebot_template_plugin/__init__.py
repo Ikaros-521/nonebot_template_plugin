@@ -242,39 +242,34 @@ async def _(
     event: Union[GroupMessageEvent, PrivateMessageEvent],
     matcher: Matcher,
 ):
+    # 获取 发送人群名片 / 昵称
+    # 这里使用消息发送人的 群名片 或 昵称 或 “亻尔女子”，当前值 if 判断为假时自动向后取值
+    nickname = event.sender.card or event.sender.nickname or "亻尔女子"
+
+    pic_path = Path(__file__).parent / "res" / "pic"
+    pic1 = pic_path / "77470708_p5.png"
+    pic2 = pic_path / "81274446_p0.jpg"
+
+    # 定义要构建合并转发的消息
+    messages: List[Message | str] = [
+        "文本消息1",
+        "带图片消息" + MessageSegment.image(pic1),
+        # 单图片消息，使用 Message 实例拼接 MessageSegment 构建消息
+        Message() + MessageSegment.image(pic2),
+    ]
+
+    # 使用列表推导式构建合并转发节点列表
+    forward_nodes = [
+        MessageSegment.node_custom(
+            user_id=event.user_id,  # 转发者的QQ号（这里使用消息发送人 qq）
+            nickname=nickname,  # 转发者的昵称
+            content=x,
+        )
+        for x in messages
+    ]
+
     # 判断消息来源（群聊 / 私聊）
     is_group = isinstance(event, GroupMessageEvent)
-
-    # 图片路径
-    img_path = Path(__file__).parent / "res" / "pic" / "77470708_p5.png"
-
-    # 随便定义了个字符串数组 存两数据演示一下。可以将具体需要发送的文本信息存放到该数组中
-    out_str_arr = ["数组中的字符串1", "数组中的字符串2"]
-
-    # 定义了一个空的 msgList 列表
-    msgList = []
-
-    # 遍历 out_str_arr 数组
-    for out_str in out_str_arr:
-        # 将多个元素添加到列表 msgList 中
-        #
-        # list.extend() 方法可以接受一个可迭代对象（Iterator）作为参数，如列表、元组或集合等。
-        # 当该方法被调用时，它将可迭代对象中的所有元素添加到 msgList 列表中。
-        msgList.extend(
-            [
-                # 创建一些自定义的节点，供消息链使用
-                MessageSegment.node_custom(
-                    user_id=123456,  # 转发者的QQ号（随便填）
-                    nickname="bot",  # 转发者的昵称（随便填）
-                    content=Message(MessageSegment.text(out_str)),
-                ),
-                MessageSegment.node_custom(
-                    user_id=1234567,
-                    nickname="bot2",
-                    content=Message(MessageSegment.image(file=img_path)),
-                ),
-            ]
-        )
 
     # 异常捕获
     try:
@@ -283,12 +278,18 @@ async def _(
             # 构建群聊合并转发消息。
             # 具体来说，该方法会将 msgList 列表中的信息发送到指定的 group_id 群组中。
             # 其中，group_id 表示目标群组的 ID，messages 表示需要发送的消息列表
-            await bot.send_group_forward_msg(group_id=event.group_id, messages=msgList)
+            await bot.send_group_forward_msg(
+                group_id=event.group_id,
+                messages=forward_nodes,
+            )
         else:
             # 构建私聊合并转发消息。
             # 将 msgList 列表中的信息发送到指定的 user_id 用户中。
             # 其中，user_id 表示目标用户的 ID，messages 表示需要发送的消息列表
-            await bot.send_private_forward_msg(user_id=event.user_id, messages=msgList)
+            await bot.send_private_forward_msg(
+                user_id=event.user_id,
+                messages=forward_nodes,
+            )
 
     except Exception:
         logger.exception("消息发送失败")
